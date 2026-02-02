@@ -18,6 +18,9 @@
     }
 
     * { box-sizing: border-box; }
+<audio id="bgMusic" preload="auto" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
 
     body {
       margin: 0;
@@ -290,13 +293,20 @@
     noBtn.addEventListener("click", e => e.preventDefault());
 
     /* ---------- YES CLICK ---------- */
-    yesBtn.addEventListener("click", () => {
-      zone.style.display = "none";
-      hint.style.display = "none";     // HIDE THE HINT
-      result.style.display = "block";
-      resizeConfettiCanvas();
-      fullScreenConfetti();
-    });
+const bgMusic = document.getElementById("bgMusic");
+
+yesBtn.addEventListener("click", () => {
+  bgMusic.volume = 0.4;
+  bgMusic.play().catch(() => {});
+  
+  zone.style.display = "none";
+  hint.style.display = "none";
+  result.style.display = "block";
+  resizeConfettiCanvas();
+  fullScreenConfetti();
+});
+
   </script>
 </body>
+
 </html>
